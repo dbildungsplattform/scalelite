@@ -1,0 +1,21 @@
+name: Docker Image on Push to GHCR
+
+on:
+  push:
+    branches:
+      - 'ruby-update'
+
+jobs:
+  build_image_on_push:
+    permissions:
+      packages: write
+      security-events: write
+      contents: read
+    uses: dbildungsplattform/dbp-github-workflows/.github/workflows/image-publish-trivy.yaml@4b5c0434f28b537e9199ffebc21f4e6e39cbcdde # 8.4.3
+    with:
+      image_name: "scalelite"
+      add_latest_tag: true
+      container_registry: "ghcr.io"
+      run_trivy_scan: true
+      run_clamav_scan: true
+      limit-severities-for-sarif: false
