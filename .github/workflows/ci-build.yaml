@@ -15,6 +15,7 @@ jobs:
     with:
       image_name: "scalelite"
       add_latest_tag: true
+      image_tag_generation: "ticket_from_branch"
       container_registry: "ghcr.io"
       run_trivy_scan: true
       run_clamav_scan: true
